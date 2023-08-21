@@ -1,0 +1,208 @@
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Receipt</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+            text-indent: 0;
+        }
+
+
+        .center-content {
+            padding-top: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+
+        .s1 {
+            color: black;
+            font-family: "Times New Roman", serif;
+            font-style: normal;
+            font-weight: bold;
+            text-decoration: none;
+            font-size: 11pt;
+        }
+
+        .s2 {
+            color: black;
+            font-family: "Times New Roman", serif;
+            font-style: normal;
+            font-weight: bold;
+            text-decoration: none;
+            font-size: 9pt;
+        }
+
+        .s3 {
+            color: black;
+            font-family: "Times New Roman", serif;
+            font-style: normal;
+            font-weight: normal;
+            text-decoration: none;
+            font-size: 9pt;
+        }
+
+        p {
+            color: black;
+            font-family: "Times New Roman", serif;
+            font-style: normal;
+            font-weight: normal;
+            text-decoration: none;
+            font-size: 9pt;
+            margin: 0pt;
+        }
+
+        table,
+        tbody {
+            vertical-align: top;
+            overflow: visible;
+        }
+
+    </style>
+</head>
+
+<body>
+<div class="center-content">
+    <table style="border-collapse:collapse;margin-left:5pt" cellspacing="0">
+        <tr style="height:21pt">
+            <td style="width:242pt;border-bottom-style:solid;border-bottom-width:1pt" colspan="2">
+                <p style="text-indent: 0pt;text-align: left;"><br/></p>
+            </td>
+            <td style="width:103pt;border-bottom-style:solid;border-bottom-width:1pt">
+                <p class="s1" style="padding-left: 10pt;text-indent: 0pt;line-height: 12pt;text-align: left;"><a
+                        name="bookmark0">Receipt</a></p>
+            </td>
+            <td style="width:210pt;border-bottom-style:solid;border-bottom-width:1pt">
+                <p style="text-indent: 0pt;text-align: left;"><br/></p>
+            </td>
+        </tr>
+        <tr style="height:41pt">
+            <td
+                    style="width:135pt;border-top-style:solid;border-top-width:1pt;border-bottom-style:solid;border-bottom-width:1pt">
+                <p class="s2" style="padding-top: 5pt;text-indent: 0pt;text-align: left;">Bill id <span class="s3">: {{bill_id}}</span>
+                </p>
+                <p style="text-indent: 0pt;text-align: left;"><br/></p>
+                <p class="s2" style="text-indent: 0pt;text-align: left;">Payment Mode <span class="s3">:
+                            {{payment_mode}}</span></p>
+            </td>
+            <td
+                    style="width:107pt;border-top-style:solid;border-top-width:1pt;border-bottom-style:solid;border-bottom-width:1pt">
+                <p class="s2" style="padding-top: 5pt;padding-left: 4pt;text-indent: 0pt;text-align: left;">Name
+                    <span class="s3">: {{patient_name}}</span>
+                </p>
+                <p style="text-indent: 0pt;text-align: left;"><br/></p>
+            </td>
+            <td
+                    style="width:103pt;border-top-style:solid;border-top-width:1pt;border-bottom-style:solid;border-bottom-width:1pt">
+                <p style="text-indent: 0pt;text-align: left;"><br/></p>
+            </td>
+            <td
+                    style="width:210pt;border-top-style:solid;border-top-width:1pt;border-bottom-style:solid;border-bottom-width:1pt">
+                <p class="s2" style="padding-top: 5pt;padding-left: 43pt;text-indent: 0pt;text-align: left;">Sex
+                    / Age
+                    <span class="s3">: {{patient_gender}} / {{patient_age}}</span>
+                </p>
+                <p style="text-indent: 0pt;text-align: left;"><br/></p>
+                <p class="s2" style="padding-left: 43pt;text-indent: 0pt;text-align: left;">Date &amp; Time
+                    <span class="s3">: {{date_time}}</span>
+                </p>
+            </td>
+        </tr>
+        <tr style="height:20pt">
+            <td
+                    style="width:135pt;border-top-style:solid;border-top-width:1pt;border-bottom-style:solid;border-bottom-width:1pt">
+                <p class="s2" style="padding-top: 3pt;text-indent: 0pt;text-align: left;">Sr. Test Name</p>
+            </td>
+            <td
+                    style="width:107pt;border-top-style:solid;border-top-width:1pt;border-bottom-style:solid;border-bottom-width:1pt">
+                <p style="text-indent: 0pt;text-align: left;"><br/></p>
+            </td>
+            <td
+                    style="width:103pt;border-top-style:solid;border-top-width:1pt;border-bottom-style:solid;border-bottom-width:1pt">
+                <p style="text-indent: 0pt;text-align: left;"><br/></p>
+            </td>
+            <td
+                    style="width:210pt;border-top-style:solid;border-top-width:1pt;border-bottom-style:solid;border-bottom-width:1pt">
+                <p class="s2" style="padding-top: 3pt;padding-right: 22pt;text-indent: 0pt;text-align: right;">
+                    Test
+                    Price</p>
+            </td>
+        </tr>
+        {% for test in tests %}
+        <tr style="height:22pt">
+            <td style="width:135pt;border-top-style:solid;border-top-width:1pt">
+                <p class="s3" style="padding-top: 6pt;text-indent: 0pt;text-align: left;">{{ forloop.counter }}.
+                    {{test.name | upper}}
+                </p>
+            </td>
+            <td style="width:107pt;border-top-style:solid;border-top-width:1pt">
+                <p style="text-indent: 0pt;text-align: left;"><br/></p>
+            </td>
+            <td style="width:103pt;border-top-style:solid;border-top-width:1pt">
+                <p style="text-indent: 0pt;text-align: left;"><br/></p>
+            </td>
+            <td style="width:210pt;border-top-style:solid;border-top-width:1pt">
+                <p class="s3" style="padding-top: 6pt;padding-right: 29pt;text-indent: 0pt;text-align: right;">
+                    {{test.price}}
+                </p>
+            </td>
+        </tr>
+        {% endfor %}
+        <tr style="height:20pt">
+            <td
+                    style="width:135pt;border-top-style:solid;border-top-width:1pt;border-bottom-style:solid;border-bottom-width:1pt">
+                <p class="s3" style="padding-top: 3pt;text-indent: 0pt;text-align: left;"> <span class="s2">Payable Amount</span>
+
+                </p>
+            </td>
+            <td
+                    style="width:107pt;border-top-style:solid;border-top-width:1pt;border-bottom-style:solid;border-bottom-width:1pt">
+                <p class="s3" style="padding-top: 3pt;padding-left: 1pt;text-indent: 0pt;text-align: left;">
+                </p>
+            </td>
+            <td
+                    style="width:103pt;border-top-style:solid;border-top-width:1pt;border-bottom-style:solid;border-bottom-width:1pt">
+                <p style="text-indent: 0pt;text-align: left;"><br/></p>
+            </td>
+            <td
+                    style="width:210pt;border-top-style:solid;border-top-width:1pt;border-bottom-style:solid;border-bottom-width:1pt">
+                <p class="s3" style="padding-top: 6pt;padding-right: 29pt;text-indent: 0pt;text-align: right;">
+                    <span class="s2">Total: {{total_amount}}</span></p>
+            </td>
+        </tr>
+        <tr style="height:59pt">
+            <td
+                    style="width:135pt;border-top-style:solid;border-top-width:1pt;border-bottom-style:solid;border-bottom-width:1pt">
+                <p style="text-indent: 0pt;text-align: left;"><br/></p>
+            </td>
+            <td
+                    style="width:107pt;border-top-style:solid;border-top-width:1pt;border-bottom-style:solid;border-bottom-width:1pt">
+                <p style="text-indent: 0pt;text-align: left;"><br/></p>
+            </td>
+            <td
+                    style="width:103pt;border-top-style:solid;border-top-width:1pt;border-bottom-style:solid;border-bottom-width:1pt">
+                <p style="text-indent: 0pt;text-align: left;"><br/></p>
+            </td>
+            <td
+                    style="width:210pt;border-top-style:solid;border-top-width:1pt;border-bottom-style:solid;border-bottom-width:1pt">
+                <p class="s2" style="padding-top: 6pt;padding-right: 29pt;text-indent: 0pt;text-align: right;">
+                    Payable
+                    Amount : {{total_amount}}</p>
+                <p style="text-indent: 0pt;text-align: left;"><br/></p>
+                <p class="s2" style="padding-top: 6pt;padding-right: 29pt;text-indent: 0pt;text-align: right;">Total Paid : {{advance}}
+                </p>
+                <p style="text-indent: 0pt;text-align: left;"><br/></p>
+                <p class="s2" style="padding-top: 6pt;padding-right: 29pt;text-indent: 0pt;text-align: right;">Due : {{due}}</p>
+            </td>
+        </tr>
+    </table>
+</div>
+</body>
+
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lab Test Report</title>
+    <style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #f3f3f3;
+    }
+
+    .container {
+        width: 80%;
+        background-color: #fff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        padding: 2em;
+        text-align: center;
+    }
+
+    h1 {
+        font-size: 2em;
+        margin-bottom: 0.5em;
+    }
+
+    table {
+        border-collapse: collapse;
+        width: 100%;
+        margin-top: 1em;
+    }
+
+    th, td {
+        border: 1px solid #ccc;
+        padding: 0.5em;
+    }
+
+    th {
+        text-align: center;
+        background-color: #f2f2f2;
+    }
+
+    td {
+        text-align: center;
+    }
+
+    footer {
+        font-size: 0.8em;
+        margin-top: 1em;
+        text-align: center;
+        color: #777;
+    }
+    </style>
+</head>
+<body>
+<div class="container">
+    <header>
+        <h1>Lab Test Report</h1>
+        <h2>Patient Name:</h2>
+        <p>{{ patient_name }}</p>
+        <h2>Date:</h2>
+        <p>{{ date_time }}</p>
+    </header>
+    <main>
+        <table>
+            <thead>
+            <tr>
+                <th>Test Name</th>
+                <th>Parameter</th>
+                <th>Result</th>
+                <th>Unit</th>
+                <th>Reference Value</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for test in tests %}
+            {% for parameter in test.parameters %}
+            <tr>
+                {% if forloop.first %}
+                <td rowspan="{{ test.parameters|length }}">{{ test.test_name | title }}</td>
+                {% endif %}
+                <td>{{ parameter.parameter }}</td>
+                <td>{{ parameter.value }}</td>
+                <td>{{ parameter.units }}</td>
+                <td>{{ parameter.ref_range }}</td>
+            </tr>
+            {% endfor %}
+            {% endfor %}
+            </tbody>
+        </table>
+    </main>
+</div>
+</body>
+</html>
